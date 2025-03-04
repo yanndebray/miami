@@ -1,7 +1,7 @@
 
 <a id="TMP_4fab"></a>
 
-# Miami AI demo
+# Miami AI demo [![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=yanndebray/miami)
 <!-- Begin Toc -->
 
 ## Table of Contents
