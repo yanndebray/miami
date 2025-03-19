@@ -1,25 +1,33 @@
 
-# Miami AI demo
-<a name="beginToc"></a>
+<a id="T_852e"></a>
+
+# Miami AI demo [![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=yanndebray/miami&file=notebook.mlx)
+
+<!-- Begin Toc -->
 
 ## Table of Contents
-&emsp;[Data Prep](#data-prep)
+&emsp;[Data Prep](#H_0c87)
  
-&emsp;&emsp;[Dataset creation](#dataset-creation)
+&emsp;&emsp;[Dataset creation](#H_4f83)
  
-&emsp;&emsp;[Retime](#retime)
+&emsp;&emsp;[Retime](#H_0fb8)
  
-&emsp;&emsp;[Smooth](#smooth)
+&emsp;&emsp;[Smooth](#H_06f9)
  
-&emsp;[Classification](#classification)
+&emsp;[Classification](#H_25e9)
  
-&emsp;&emsp;[Training](#training)
+&emsp;&emsp;[Training](#H_6796)
  
-&emsp;&emsp;[Inference](#inference)
+&emsp;&emsp;[Inference](#H_6b88)
  
-<a name="endToc"></a>
+&emsp;[Sharing](#TMP_290d)
+ 
+<!-- End Toc -->
+<a id="H_0c87"></a>
 
 # Data Prep
+<a id="H_4f83"></a>
+
 ## Dataset creation
 ```matlab
 % Define the time range
@@ -46,6 +54,8 @@ temperatureForecast = table(timeVector', temperatureData', ...
 % Convert to Timetable
 TT = table2timetable(temperatureForecast)
 ```
+
+
 | |Time|Temperature|
 |:--:|:--:|:--:|
 |1|18-Mar-2025 16:30:01|17.2671|
@@ -63,6 +73,7 @@ TT = table2timetable(temperatureForecast)
 |13|20-Mar-2025 04:30:01|27.0211|
 |14|20-Mar-2025 07:30:01|25.2475|
 
+
 ```matlab
 clf
 plot(temperatureForecast.Time,temperatureForecast.Temperature)
@@ -73,12 +84,15 @@ title('Temperature Forecast Over 3 Days');
 ```
 
 ![figure_0.png](README_media/figure_0.png)
+<a id="H_0fb8"></a>
 
 ## Retime
 ```matlab
 % Retime timetable
 newTimetable = retime(TT,"regular","linear","TimeStep",hours(1))
 ```
+
+
 | |Time|Temperature|
 |:--:|:--:|:--:|
 |1|18-Mar-2025 16:00:00|16.2313|
@@ -95,6 +109,9 @@ newTimetable = retime(TT,"regular","linear","TimeStep",hours(1))
 |12|19-Mar-2025 03:00:00|26.3493|
 |13|19-Mar-2025 04:00:00|26.8344|
 |14|19-Mar-2025 05:00:00|26.7136|
+
+
+<a id="H_06f9"></a>
 
 ## Smooth
 ```matlab
@@ -125,6 +142,7 @@ Go further
 ```matlab
 edit 1_Data_Analysis/analyze2013stormData.mlx
 ```
+<a id="H_25e9"></a>
 
 # Classification
 
@@ -165,6 +183,7 @@ Derive test data
 testData = removevars(weatherData, "Condition");
 writetable(testData,"2_Machine_Learning/testData.csv")
 ```
+<a id="H_6796"></a>
 
 ## Training
 ```matlab
@@ -175,6 +194,8 @@ classificationLearner
 
 
 ![image_1.png](README_media/image_1.png)
+
+<a id="H_6b88"></a>
 
 ## Inference
 ```matlab
@@ -210,4 +231,31 @@ Go further
 
 ```matlab
 classificationLearner("2_Machine_Learning/ClassificationLearnerSession.mat")
+```
+<a id="TMP_290d"></a>
+
+# Sharing
+<a id="TMP_6131"></a>
+-  Export 
+```matlab
+export notebook.mlx README.md
+```
+
+```matlabTextOutput
+ans = '/OneDrive/MATLAB/miami/3_Open_Sharing/README.md'
+```
+
+-  Add Open in MATLAB Online badge 
+
+`[![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=yanndebray/miami&file=notebook.mlx)`
+
+-  Add [Focused View](https://www.mathworks.com/products/matlab-online/focused-view.html): 
+
+Open the live script in focus mode: [https://matlab.mathworks.com/open/github/v1?repo=yanndebray/miami&file=3\_Open\_Sharing/livescript.mlx&focus=true](https://matlab.mathworks.com/open/github/v1?repo=yanndebray/miami&file=3_Open_Sharing/livescript.mlx&focus=true)
+
+
+Go further
+
+```matlab
+edit 3_Open_Sharing/livescript.mlx
 ```
